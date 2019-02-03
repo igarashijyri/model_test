@@ -1,3 +1,3 @@
 class Owner < ApplicationRecord
-  has_many :castles, dependent: destroy
+  has_many :castles, dependent: :destroy
 end
