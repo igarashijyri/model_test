@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_02_085424) do
+ActiveRecord::Schema.define(version: 2019_02_03_110132) do
 
   create_table "castles", force: :cascade do |t|
     t.string "castle"
@@ -19,7 +19,29 @@ ActiveRecord::Schema.define(version: 2019_02_02_085424) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "keepers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "owners", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pets", force: :cascade do |t|
+    t.string "name"
+    t.integer "keeper_id"
+    t.integer "seller_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["keeper_id"], name: "index_pets_on_keeper_id"
+    t.index ["seller_id"], name: "index_pets_on_seller_id"
+  end
+
+  create_table "sellers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
